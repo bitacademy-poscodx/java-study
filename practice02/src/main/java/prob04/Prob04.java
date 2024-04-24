@@ -11,6 +11,8 @@ public class Prob04 {
 	
 	public static char[] reverse(String str) {
 		/* 코드를 완성합니다 */
+		char[] cs = str.toCharArray();
+		
 		return null;
 	}
 
