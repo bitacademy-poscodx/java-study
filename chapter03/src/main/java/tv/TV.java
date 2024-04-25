@@ -29,10 +29,10 @@ public class TV {
 			return;
 		}
 		
-		if(channel < 0) {
+		if(channel <= 0) {
 			channel = 255;
 		} else if(channel > 255){
-			channel = 0;
+			channel = 1;
 		}
 		
 		this.channel = channel;
