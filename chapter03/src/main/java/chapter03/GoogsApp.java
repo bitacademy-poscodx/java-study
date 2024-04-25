@@ -22,6 +22,6 @@ public class GoogsApp {
 		camera.setPrice(400000);
 		System.out.println(camera.calcDiscountPrice(0.5f));
 		
-		System.out.println(camera);
+		System.out.println(camera.toString());
 	}
 }
