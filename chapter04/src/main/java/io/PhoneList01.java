@@ -33,10 +33,10 @@ public class PhoneList01 {
 			//1. 기반스트림
 			FileInputStream fis = new FileInputStream(file);
 			
-			//2. 보조스트림02 (byte|byte|byte -> char)
+			//2. 보조스트림01 (byte|byte|byte -> char)
 			InputStreamReader isr = new InputStreamReader(fis, "utf-8");
 			
-			//3. 보조스트림03 (char|char|char|\n -> "charcharchar")
+			//3. 보조스트림02 (char1|char2|char3|\n -> "char1char2char3")
 			br = new BufferedReader(isr);
 			
 			//4. 처리
