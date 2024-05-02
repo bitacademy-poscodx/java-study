@@ -94,6 +94,36 @@ public class RequestHandler extends Thread {
 		outputStream.write(body);
 	}
 
+	private void response400Error(OutputStream os, String protocol) throws IOException {
+		File file = new File(DOCUMENT_ROOT + "/error/400.html");
+		if(file.exists() == false) {
+			response404Error(os, protocol);
+			return;
+		}
+		
+		byte[] body = Files.readAllBytes(file.toPath());
+		String contentType = Files.probeContentType(file.toPath());
+		os.write((protocol + " 400 Bad Request\n").getBytes("UTF-8"));
+		os.write(("Content-Type:" + contentType + "; charset=utf-8\n").getBytes( "UTF-8" ));
+		os.write("\r\n".getBytes() );
+		os.write(body);
+	}
+	
+	private void response404Error(OutputStream os, String protocol)  throws IOException {
+		File file = new File(DOCUMENT_ROOT + "/error/404.html");
+	
+		if(file.exists() == false) {
+			System.out.println("file not found:" + file.getAbsolutePath());
+			return;
+		}
+		
+		byte[] body = Files.readAllBytes(file.toPath());
+		String contentType = Files.probeContentType(file.toPath());
+		os.write((protocol + " 404 File Not Found\n").getBytes("UTF-8"));
+		os.write(("Content-Type:" + contentType + "; charset=utf-8\n").getBytes( "UTF-8" ));
+		os.write("\r\n".getBytes() );
+		os.write(body);
+	}	
 	public void consoleLog( String message ) {
 		System.out.println( "[RequestHandler#" + getId() + "] " + message );
 	}
